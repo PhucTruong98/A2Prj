@@ -1,0 +1,403 @@
+@startuml
+
+title __A2's Class Diagram__\n
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.AppMain {
+        - current : Form
+        - theme : Resources
+        + destroy()
+        + init()
+        + start()
+        + stop()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.Bird {
+        ~ image : Image
+        - randomSteerValue : int
+        + Bird()
+        + draw()
+        + toString()
+        + updateClockTick()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.ButtonsPanel {
+        - accelButton : Button
+        - brakeButton : Button
+        - leftButton : Button
+        - rightButton : Button
+        + ButtonsPanel()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.ClockTest {
+        ~ clockDigits : Image[]
+        ~ colonImage : Image
+        ~ digitImages : Image[]
+        {static} - HM_COLON_IDX : int
+        {static} - MS_COLON_IDX : int
+        - ledColor : int
+        {static} - numDigitsShowing : int
+        + ClockTest()
+        + animate()
+        + calcPreferredSize()
+        + laidOut()
+        + paint()
+        + setLedColor()
+        + start()
+        + stop()
+        - setCurrentTime()
+        - setTime()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.DamageDisplay {
+        + DamageDisplay()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.Fixed {
+        + toString()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.FuelDisplay {
+        + FuelDisplay()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.Game {
+        {static} - TIMER_EVENT_RATE : int
+        - accelButton : Button
+        - brakeButton : Button
+        - leftButton : Button
+        - rightButton : Button
+        - timer : UITimer
+        + Game()
+        + run()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.GameClockComponent {
+        - numDigitsShowing : int
+        - startTime : int[]
+        - stopTime : long
+        - time : int[]
+        + GameClockComponent()
+        + getElapsedTime()
+        + resetResetElapsedTime()
+        + setDigits()
+        + startElapsedTime()
+        + stopElapsedTime()
+        - setTime()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.GameObject {
+        - color : int
+        {static} - gameSettings : GameSettings
+        {static} - rand : Random
+        - size : int
+        + GameObject()
+        + draw()
+        + getColor()
+        + getGameSettings()
+        + getLocation()
+        + getRandom()
+        + getSize()
+        + randomLocation()
+        + setColor()
+        + setLocation()
+        + setLocation()
+        + setSize()
+        + toString()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.GameObjectCollection {
+        - collection : ArrayList<GameObject>
+        + GameObjectCollection()
+        + add()
+        + get()
+        + getCollection()
+        + remove()
+        + set()
+        + size()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.GameSettings {
+        + birdSizeConstraint : int[]
+        + fuelBlimpCapacityRange : int[]
+        + fuelBlimpSizeConstraint : int[]
+        + hellicopterSize : int
+        + screenConstraintX : int
+        + screenConstraintY : int
+        + skyScraperSize : int
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.GameWorld {
+        - amountOfBirds : int
+        - amountOfRefuelingBlimps : int
+        - amountOfSkyScrapers : int
+        - clock : int
+        - lives : int
+        + GameWorld()
+        + accelerate()
+        + brake()
+        + collideWithBird()
+        + collideWithHelicopter()
+        + collideWithSkyScraper()
+        + collidedWithRefuelingBlimp()
+        + display()
+        + exit()
+        + getcollection()
+        + init()
+        + map()
+        + registerListener()
+        + steerLeft()
+        + steerRight()
+        + tick()
+        + updateGlassCockPit()
+        + updateMapView()
+        - populateGameWorld()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.GlassCockpit {
+        + GlassCockpit()
+        + update()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.HeadingDisplay {
+        + HeadingDisplay()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.Hellicopter {
+        ~ image : Image
+        - damageLevel : double
+        - fuelConsumptionRate : double
+        - fuelLevel : double
+        - lastSkyScraperReached : double
+        - maximumSpeed : double
+        - stickAngle : double
+        + Hellicopter()
+        + accelerate()
+        + brake()
+        + collideWithBird()
+        + collideWithHelicopter()
+        + collideWithSkyscraper()
+        + draw()
+        + getDamageLevel()
+        + getFuelLevel()
+        + getLastSkyScraperReached()
+        + isDead()
+        + setFuelLevel()
+        + steerLeft()
+        + steerRight()
+        + toString()
+        + updateClockTick()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    interface org.csc133.a2.IDrawable {
+        {abstract} + draw()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    interface org.csc133.a2.IsSteerable {
+        {abstract} + steerLeft()
+        {abstract} + steerRight()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.LastSkyScraperDisplay {
+        + LastSkyScraperDisplay()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.LivesDisplay {
+        + LivesDisplay()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.Location {
+        - x : double
+        - y : double
+        + Location()
+        + getX()
+        + getY()
+        + setLocation()
+        + toString()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.MapView {
+        ~ helicopterImg : Image
+        + MapView()
+        + paint()
+        + update()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.Movable {
+        # heading : int
+        # speed : double
+        + getHeading()
+        + getSpeed()
+        + move()
+        + setHeading()
+        + setSpeed()
+        + toString()
+        + updateClockTick()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.RefuelingBlimp {
+        ~ image : Image
+        - capacity : int
+        + RefuelingBlimp()
+        + draw()
+        + getCapacity()
+        + toString()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.SevenSegDisplayComponent {
+        ~ clockDigits : Image[]
+        ~ colonImage : Image
+        ~ digitImages : Image[]
+        {static} - HM_COLON_IDX : int
+        {static} - MS_COLON_IDX : int
+        - ledColor : int
+        - numDigitsShowing : int
+        - value : double
+        + SevenSegDisplayComponent()
+        + animate()
+        + calcPreferredSize()
+        + laidOut()
+        + paint()
+        + setColor()
+        + setDigits()
+        + setLedColor()
+        + setValue()
+        + start()
+        + stop()
+        - setCurrentTime()
+    }
+  }
+  
+
+  namespace org.csc133.a2 {
+    class org.csc133.a2.SkyScraper {
+        ~ image : Image
+        - sequenceNumber : int
+        + SkyScraper()
+        + draw()
+        + getSequenceNumber()
+        + toString()
+    }
+  }
+  
+
+  org.csc133.a2.Bird -up-|> org.csc133.a2.Movable
+  org.csc133.a2.ButtonsPanel -up-|> com.codename1.ui.Container
+  org.csc133.a2.ClockTest -up-|> com.codename1.ui.Component
+  org.csc133.a2.DamageDisplay -up-|> org.csc133.a2.SevenSegDisplayComponent
+  org.csc133.a2.Fixed -up-|> org.csc133.a2.GameObject
+  org.csc133.a2.FuelDisplay -up-|> org.csc133.a2.SevenSegDisplayComponent
+  org.csc133.a2.Game .up.|> java.lang.Runnable
+  org.csc133.a2.Game -up-|> com.codename1.ui.Form
+  org.csc133.a2.Game o-- org.csc133.a2.GameWorld : gameWorld
+  org.csc133.a2.Game o-- org.csc133.a2.GlassCockpit : glassCockpit
+  org.csc133.a2.Game o-- org.csc133.a2.MapView : mapView
+  org.csc133.a2.GameClockComponent -up-|> org.csc133.a2.SevenSegDisplayComponent
+  org.csc133.a2.GameObject .up.|> org.csc133.a2.IDrawable
+  org.csc133.a2.GameObject o-- org.csc133.a2.Location : location
+  org.csc133.a2.GameWorld o-- org.csc133.a2.GameObjectCollection : collection
+  org.csc133.a2.GameWorld o-- org.csc133.a2.GlassCockpit : glassCockpit
+  org.csc133.a2.GameWorld o-- org.csc133.a2.MapView : mapView
+  org.csc133.a2.GameWorld o-- org.csc133.a2.Location : startingLocation
+  org.csc133.a2.GlassCockpit -up-|> com.codename1.ui.Container
+  org.csc133.a2.GlassCockpit o-- org.csc133.a2.ClockTest : clockTest
+  org.csc133.a2.GlassCockpit o-- org.csc133.a2.GameObjectCollection : collection
+  org.csc133.a2.GlassCockpit o-- org.csc133.a2.DamageDisplay : damageDisplay
+  org.csc133.a2.GlassCockpit o-- org.csc133.a2.FuelDisplay : fuelDisplay
+  org.csc133.a2.GlassCockpit o-- org.csc133.a2.HeadingDisplay : headingDisplay
+  org.csc133.a2.GlassCockpit o-- org.csc133.a2.LastSkyScraperDisplay : lastSkyScraperDisplay
+  org.csc133.a2.GlassCockpit o-- org.csc133.a2.LivesDisplay : livesDisplay
+  org.csc133.a2.GlassCockpit o-- org.csc133.a2.GameClockComponent : timer
+  org.csc133.a2.HeadingDisplay -up-|> org.csc133.a2.SevenSegDisplayComponent
+  org.csc133.a2.Hellicopter .up.|> org.csc133.a2.IsSteerable
+  org.csc133.a2.Hellicopter -up-|> org.csc133.a2.Movable
+  org.csc133.a2.LastSkyScraperDisplay -up-|> org.csc133.a2.SevenSegDisplayComponent
+  org.csc133.a2.LivesDisplay -up-|> org.csc133.a2.SevenSegDisplayComponent
+  org.csc133.a2.MapView -up-|> com.codename1.ui.Container
+  org.csc133.a2.MapView o-- org.csc133.a2.GameObjectCollection : gameObjectCollection
+  org.csc133.a2.Movable -up-|> org.csc133.a2.GameObject
+  org.csc133.a2.RefuelingBlimp -up-|> org.csc133.a2.Fixed
+  org.csc133.a2.SevenSegDisplayComponent -up-|> com.codename1.ui.Component
+  org.csc133.a2.SkyScraper -up-|> org.csc133.a2.Fixed
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
